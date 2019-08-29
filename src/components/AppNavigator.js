@@ -26,16 +26,16 @@ import { withStyles } from '@material-ui/core/styles';
 
 const categories = [
     {
-        id: 'Ejemplos',
+        id: 'Examples',
         sections : [
-            { id : 'Tablas',    icon: <BusinessIcon />, url : '/table' },
-            { id : 'Pestañas',    icon: <GroupIcon />, url : '/tabs' },
+            { id : 'Tables',    icon: <BusinessIcon />, url : '/table' },
+            { id : 'Tabs',    icon: <GroupIcon />,  url : '/tabs' },
         ],
     },
     {
-        id: 'Otra categoria',
+        id: 'Other category',
         sections: [
-            { id: 'Otra seccion',    icon: <SaleIcon />, url : '/sales' },
+            { id: 'Dynamic data',    icon: <SaleIcon />, url : '/data' },
         ]
     },
 ];

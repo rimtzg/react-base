@@ -3,6 +3,7 @@ import { table_options } from '../config.js'
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { withStyles } from '@material-ui/core/styles';
+import MUIDataTable from "mui-datatables";
 import {
     Grid,
     Fab,
@@ -16,11 +17,13 @@ import {
 
 //import Layout from '../components/Layout';
 import Dialog from '../components/Dialog';
-import Table from '../components/Table';
+//import Table from '../components/Table';
 
-import { getToken, setToken, getData } from '../functions.js';
+//import { getToken, setToken, getData } from '../functions.js';
 
 import AppLayout from '../components/AppLayout';
+
+//import UserContext from '../contexts/user';
 
 const title = 'Tablas'
 
@@ -257,6 +260,25 @@ const styles = theme => ({
     },
 })
 
+function Table(props) {
+    const { classes } = props;
+
+    //const user = React.useContext(UserContext);
+
+    /*
+    if(user.token == undefined){
+        props.history.push('/login')
+    }
+    */
+
+    return (
+        <AppLayout title={title} >
+          <MUIDataTable title="Titulo de la tabla" data={example_data} columns={columns} options={table_options} />
+        </AppLayout>
+    )
+}
+
+/*
 class Home extends Component {
 
     constructor() {
@@ -301,13 +323,12 @@ class Home extends Component {
         //this.input_name.current.value = "ASDFGHJKL"
 
         //console.log()
-        /*
-        let data = {
+        
+        //let data = {
 
-        }
+        //}
 
-        setData('/business/', data)
-        */
+        //setData('/business/', data)
     }
 
     closeDialog = () => {
@@ -348,4 +369,6 @@ class Home extends Component {
     }
 }
 
-export default withStyles(styles)(Home);
+*/
+
+export default withStyles(styles)(Table);

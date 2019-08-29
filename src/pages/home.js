@@ -1,11 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 //import Layout from '../components/Layout';
-import { getToken, setToken } from '../functions.js';
+import { getToken, setToken, getData } from '../functions.js';
 
 import AppLayout from '../components/AppLayout';
+//import UserContext from '../contexts/user';
+//import DataContext from '../contexts/data';
+
+import withSession from "../hocs/withSession";
 
 const title = 'Inicio'
 
@@ -13,25 +17,42 @@ const styles = theme => ({
 
 })
 
-class Home extends Component {
+/*
+function Home(props) {
+    //const user = React.useContext(UserContext);
+
+    //data.data = await getData(user.token, '/business/')
+
+    if(props.session.token == undefined){
+        props.history.push('/login')
+    }
+
+    return (
+        <AppLayout title={title} >
+          <h2>{props.session.name}</h2>
+        </AppLayout>
+    )
+}
+*/
+
+
+class Home extends React.Component {
 
     componentWillMount() {
-        let token = getToken()
+        const { setName } = this.props;
 
-        if(token == undefined){
-            this.props.history.push('/login')
-        }
+        setName("Otro")
     }
 
     render(){
-        const { classes, history } = this.props;
+        const { classes, history, session } = this.props;
 
         return (
             <AppLayout title={title} >
-              <h2>Home</h2>
+              <h2>{session.name}</h2>
             </AppLayout>
         )
     }
 }
 
-export default withStyles(styles)(Home);
+export default withSession(withStyles(styles)(Home));
